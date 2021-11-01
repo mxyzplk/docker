@@ -16,6 +16,8 @@ service_name:
   # Compose will build and tag it with a generated name, and use that image
   # thereafter.
   build: ./
+    context: #directory that will be the context. A docker-compose build 
+            #command will search for a Dockerfile in that directory.
   # Add or drop container capabilities. See man 7 capabilities for a full list.
   cap_add:
     - ALL
