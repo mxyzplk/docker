@@ -1,0 +1,19 @@
+FROM centos:8
+
+RUN yum -y install openssh-server
+
+RUN useradd ${username} && \ 
+    echo ${password} | passwd ${username} --stdin &&\
+    mkdir -p /home/${username}/.ssh && \
+    chmod 700 /home/${username}/.ssh
+
+COPY ${ssh_key} /home/${username}/.ssh/authorized_keys
+
+RUN chown ${username}:/home/${username}/.ssh/ && \
+    chmod 600 /home/${username}/.ssh/authorized_keys
+
+RUN /usr/sbin/sshd-keygen
+
+# Start server
+CMD /usr/sbin/sshd -D
+

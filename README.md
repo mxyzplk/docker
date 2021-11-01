@@ -1,5 +1,9 @@
 # Docker scripts and tools
 
-### docker-jenkins.yml
+### compose/docker-jenkins.yml
 
 Docker compose file that creates a jenkins container.
+
+### docker/Dockerfile.centos8
+
+Dockerfile for a centos8 image
