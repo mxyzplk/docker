@@ -1,0 +1,15 @@
+# Docker compose file that creates a jenkins container.
+#
+version: "3"
+services:
+  db-host:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - "MYSQL_ROOT_PASSWORD=${secret_password}"
+    volume:
+      - "$PWD/db_data:/var/lib/mysql"
+    networks:
+      - net
+networks:
+  net:
